@@ -27,17 +27,6 @@ doStuff :: String -> String
 doStuff = toLower >>> split (Pattern " ") >>> map trim >>> reverse >>> joinWith " "  
 
 
-
--- // Exercise 1:
--- // ============
--- // use _.compose() to rewrite the function below. Hint: _.prop() is curried.
-
--- const isLastInStock = cars => {
---   var reversed_cars = _.last(cars)
---   return _.prop('in_stock', reversed_cars)
--- }
-
-
 main :: Effect Unit
 main = do 
     logShow $ "ab " <> "cd"

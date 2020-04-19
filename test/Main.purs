@@ -4,6 +4,7 @@ import Prelude
 
 import Composition.ExampleData (cars)
 import Composition.Exersice1 (isLastInStock)
+import Composition.Exersice2 (nameOfFirstCar)
 import Data.List (length)
 import Effect (Effect)
 import Effect.Aff (launchAff_)
@@ -24,4 +25,8 @@ main = launchAff_ $ runSpec [specReporter] do
     it "last car should not be in stock" do
       let isLast = isLastInStock cars
       isLast `shouldEqual` false
-    pending "feature complete"  
+  describe "Exersice 2" do
+    it "should return correct car name" do
+      let carName = nameOfFirstCar cars
+      carName `shouldEqual` "Ferrari FF"    
+  pending "feature complete"  

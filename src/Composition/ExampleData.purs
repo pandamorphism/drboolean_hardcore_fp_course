@@ -4,6 +4,7 @@ import Prelude
 
 import Data.List (List(..), (:))
 
+
 cars :: List Car
 cars =
   (Car { name: "Ferrari FF", horsepower: 660, dollar_value: 700000, in_stock: true })
@@ -25,5 +26,8 @@ data Car
 isInStock :: Car -> Boolean
 isInStock (Car {in_stock: stock}) = stock
 
+name :: Car -> String
+name (Car {name: n}) = n
+
 instance showCar :: Show Car where
-  show (Car { name: name, horsepower: horsepower, dollar_value: dollar_value, in_stock: in_stock }) = "(" <> show name <> ", " <> show horsepower <> ", " <> show dollar_value <> ", " <> show in_stock <> ")"
+  show (Car { name: n, horsepower: horsepower, dollar_value: dollar_value, in_stock: in_stock }) = "(" <> show n <> ", " <> show horsepower <> ", " <> show dollar_value <> ", " <> show in_stock <> ")"
