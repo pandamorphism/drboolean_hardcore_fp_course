@@ -1,9 +1,7 @@
 module Composition.ExampleData where
 
 import Prelude
-
 import Data.List (List(..), (:))
-
 
 cars :: List Car
 cars =
@@ -24,10 +22,13 @@ data Car
     }
 
 isInStock :: Car -> Boolean
-isInStock (Car {in_stock: stock}) = stock
+isInStock (Car { in_stock: stock }) = stock
 
 name :: Car -> String
-name (Car {name: n}) = n
+name (Car { name: n }) = n
+
+dollarValue :: Car -> Int
+dollarValue (Car { dollar_value: d }) = d
 
 instance showCar :: Show Car where
   show (Car { name: n, horsepower: horsepower, dollar_value: dollar_value, in_stock: in_stock }) = "(" <> show n <> ", " <> show horsepower <> ", " <> show dollar_value <> ", " <> show in_stock <> ")"

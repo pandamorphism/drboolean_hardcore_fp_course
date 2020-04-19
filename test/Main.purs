@@ -5,6 +5,7 @@ import Prelude
 import Composition.ExampleData (cars)
 import Composition.Exersice1 (isLastInStock)
 import Composition.Exersice2 (nameOfFirstCar)
+import Composition.Exersice3 (totalDollarValue)
 import Data.List (length)
 import Effect (Effect)
 import Effect.Aff (launchAff_)
@@ -28,5 +29,9 @@ main = launchAff_ $ runSpec [specReporter] do
   describe "Exersice 2" do
     it "should return correct car name" do
       let carName = nameOfFirstCar cars
-      carName `shouldEqual` "Ferrari FF"    
+      carName `shouldEqual` "Ferrari FF"  
+  describe "Exersice 3" do
+    it "should calculate average cost of cars" do
+      let averageDollars = totalDollarValue cars
+      averageDollars `shouldEqual` 790700      
   pending "feature complete"  
