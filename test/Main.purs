@@ -50,5 +50,5 @@ main =
           it "should find fastest" do
             let
               fastest = fastestCar cars
-            fastestCar `shouldEqual` "Aston Martin One-77 is the fastest"
+            fastest `shouldEqual` "Aston Martin One-77 is the fastest"
         pending "feature complete"
