@@ -4,11 +4,14 @@ You can edit this file as you like.
 -}
 { name = "my-project"
 , dependencies =
-  [ "arrays"
+  [ "argonaut"
+  , "arrays"
   , "console"
   , "effect"
+  , "exceptions"
   , "identity"
   , "lists"
+  , "node-fs-aff"
   , "psci-support"
   , "spec"
   , "strings"

@@ -3,6 +3,7 @@ module Monad.EitherExample where
 import Prelude
 import Data.Either (Either(..), either)
 import Data.List (List(..), (:))
+import Data.String (toUpper)
 import Effect (Effect)
 import Effect.Console (logShow)
 
@@ -33,3 +34,4 @@ main = do
     $ either (\x -> "Error: " <> x) id
     $ findColor "red" colors
     <#> (\c -> c.hex)
+    <#> toUpper
