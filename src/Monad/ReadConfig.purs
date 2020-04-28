@@ -22,19 +22,19 @@ instance decodePort :: DecodeJson Port where
     port <- obj .: "port"
     pure $ Port { port }
 
-getPort :: String -> Effect (Maybe Int)
+getPort :: String -> Effect (Either String Int)
 getPort path = do
   txt <- try $ readTextFile UTF8 path
   pure case txt of
-    (Left error) -> Nothing
+    (Left error) -> Left $ "There is no file: " <> path
     (Right lines) -> case decodeJson =<< jsonParser lines of
-      (Left error) -> Nothing
-      (Right (Port { port: n })) -> Just n
+      (Left error) -> Left "Cannot decode port from JSON file"
+      (Right (Port { port: n })) -> Right n
 
 main :: Effect Unit
 main = do
   port <- getPort "src/resources/config.json"
   log
     $ case port of
-        Nothing -> "Some default port"
-        Just p -> show p
+        Left error -> error <> " -> " <> "Some default port"
+        Right p -> show p
