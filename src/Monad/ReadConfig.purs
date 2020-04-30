@@ -3,7 +3,6 @@ module Monad.ReadConfig where
 import Prelude
 import Data.Argonaut (class DecodeJson, decodeJson, jsonParser, (.:))
 import Data.Either (Either(..))
-import Data.Maybe (Maybe(..))
 import Effect (Effect)
 import Effect.Console (log)
 import Effect.Exception (try)
@@ -28,7 +27,7 @@ getPort path = do
   pure case txt of
     (Left error) -> Left $ "There is no file: " <> path
     (Right lines) -> case decodeJson =<< jsonParser lines of
-      (Left error) -> Left "Cannot decode port from JSON file"
+      (Left error) -> Left "Cannot decode port from JSON"
       (Right (Port { port: n })) -> Right n
 
 main :: Effect Unit
